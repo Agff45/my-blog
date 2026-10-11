@@ -1,26 +1,20 @@
 ---
 title: Skyline-Speeder和原版bbr+fq在晚高峰与非晚高峰的实测对比
 published: 2026-10-09
-description: "如何使用 Firefly 博客模板。"
+description: "Skyline-Speeder和原版bbr+fq对比测试"
 image: images/cover1.png
 tags: ["VPS", "网络", "网络测试"]
 category: VPS线路
-series: "网络线路"
+series: "网络直连线路"
 seriesOrder: 1
 ---
 
 ## 先介绍一下这次测试使用的VPS
 
 
-| 商家     | 地区  | 流量        |
-| ------ | --- | --------- |
-| Rabisu | SG  | 无限流量(FUP) |
-
-
-
-| 核心  | 内存  | 硬盘  | 宽带  | 价格   |
-| --- | --- | --- | --- | ---- |
-| 1C  | 1G  | 10G | 1G  | 9.9$ |
+| 商家     | 地区  | 核心  | 内存  | 硬盘  | 带宽  | 流量        | 价格  |
+| ------ | --- | --- | --- | --- | --- | --------- | --- |
+| Rabisu | SG  | 1C  | 1G  | 10G | 1G  | 无限流量(FUP) | $9.9 |
 
 
 本地是贵州1000M移动宽带
