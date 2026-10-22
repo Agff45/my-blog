@@ -3,3 +3,41 @@ packages:
 allowBuilds:
   esbuild: true
   workerd: true
+
+patchedDependencies:
+  sprintf-js@1.0.3: patches/sprintf-js@1.0.3.patch
+
+# sprintf-js 上游至 1.1.3 未发布修复版本（GHSA-hp3w-g68c-fv3c）。
+# 已通过上面的 patchedDependencies 对 toFixed/toExponential/toPrecision 的
+# 精度参数做边界钳制来消除该 DoS；此处忽略该公告以免 CI 误报。
+# 说明：pnpm audit 按包版本号判定，因此打了补丁仍会列出该条目。
+audit:
+  ignore:
+    - GHSA-hp3w-g68c-fv3c
+
+# 安全修复：将存在漏洞的传递依赖强制提升到已修补版本。
+# 来源：pnpm audit（GHSA 公告），这些包绝大多数是构建期/工具链依赖。
+overrides:
+  # --- high ---
+  'brace-expansion@1': ^1.1.21
+  'brace-expansion@2': ^2.1.7
+  'brace-expansion@5': ^5.0.12
+  devalue: ^5.9.3
+  fast-uri: ^3.1.9
+  http-cache-semantics: ^4.3.0
+  'js-yaml@3': ^3.15.2
+  serialize-javascript: ^7.1.2
+  sharp: ^0.35.5
+  source-map-js: ^1.2.2
+  'svgo@2': ^2.8.4
+  'svgo@4': ^4.1.0
+  'undici@7': ^7.29.1
+  'undici@8': ^8.10.2
+  vite: ^8.2.4
+  # --- moderate / low ---
+  colord: ^2.10.0
+  # 0.18.11 为官方误发布的 breaking 版本（已 deprecated），固定到 0.18.10
+  katex: 0.18.10
+  postcss-selector-parser: ^7.1.7
+  sanitize-html: ^2.18.1
+  smol-toml: ^1.9.1
